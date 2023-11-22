@@ -30,17 +30,13 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-            case Key.Left:
-                    break;
-            case Key.Up:
-                    break;
-            case Key.Right:
-                    break;
-            case Key.Down:
-                    break;
+            MoveCube(e.Key); 
             }
+
+        private void MoveCube(Key direction)
+        {
+            throw new NotImplementedException();
         }
     }
 }
+
