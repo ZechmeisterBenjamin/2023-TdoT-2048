@@ -45,6 +45,10 @@ namespace TdoT_2048_WPF
         {
             //throw new NotImplementedException();
         }
+        private void AddRandomNumbers(List<List<Button>> buttons, int amount)
+        {
+
+        }
         private void FillSlots()
         {
             slots.Add(new List<Button>());
