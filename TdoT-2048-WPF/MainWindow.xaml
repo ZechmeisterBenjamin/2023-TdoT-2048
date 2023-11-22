@@ -9,21 +9,21 @@
         Name="Main_Window">
     <Grid>
         <!--#region -->
-        <Button Content="-" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="110,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="210,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="310,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="110,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="210,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="310,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="110,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="210,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="310,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TL" Content="-" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TLM" Content="-" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TRM" Content="-" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TR" Content="-" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TML" Content="-" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TMLM"  Content="-" HorizontalAlignment="Left" Margin="110,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TMRM" Content="-" HorizontalAlignment="Left" Margin="210,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="TMR" Content="-" HorizontalAlignment="Left" Margin="310,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BML"  Content="-" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BMLM" Content="-" HorizontalAlignment="Left" Margin="110,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BMRM" Content="-" HorizontalAlignment="Left" Margin="210,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BMR" Content="-" HorizontalAlignment="Left" Margin="310,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BL" Content="-" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BLM" Content="-" HorizontalAlignment="Left" Margin="110,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BRM" Content="-" HorizontalAlignment="Left" Margin="210,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <Button Name="BR" Content="-" HorizontalAlignment="Left" Margin="310,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
     </Grid>
 </Window>
