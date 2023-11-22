@@ -20,7 +20,9 @@ namespace TdoT_2048_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        string[,] slots = new string[4,4]
+        static bool addNmb = false;
+        static int score = 0;
+        string[,] slots = new string[4, 4];
         public MainWindow()
         {
             InitializeComponent();
