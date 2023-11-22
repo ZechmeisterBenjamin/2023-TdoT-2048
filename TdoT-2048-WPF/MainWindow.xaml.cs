@@ -20,7 +20,7 @@ namespace TdoT_2048_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-
+        string[,] slots = new string[4,4]
         public MainWindow()
         {
             InitializeComponent();

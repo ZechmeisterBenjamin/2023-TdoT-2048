@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TdoT_2048_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="550" MinWidth="750" MaxHeight="550" MaxWidth="750" FontSize="50"
+        Title="MainWindow" MinHeight="500" MinWidth="750" MaxHeight="500" MaxWidth="750" FontSize="50"
         Name="Main_Window">
     <Grid>
         <!--#region -->
@@ -13,27 +13,17 @@
         <Button Content="-" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="310,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="110,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="210,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="310,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="410,110,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="110,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="210,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="310,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="410,210,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="110,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="210,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="310,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="410,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="10,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="110,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="210,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="310,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="410,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-    <!--#endregion-->
     </Grid>
 </Window>
