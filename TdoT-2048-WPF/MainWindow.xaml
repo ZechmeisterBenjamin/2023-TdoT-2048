@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TdoT_2048_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="550" MinWidth="750" MaxHeight="550" MaxWidth="750" FontSize="50">
+        Title="MainWindow" MinHeight="550" MinWidth="750" MaxHeight="550" MaxWidth="750" FontSize="50"
+        Name="Main_Window">
     <Grid>
+        <!--#region -->
         <Button Content="-" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
@@ -32,5 +34,6 @@
         <Button Content="-" HorizontalAlignment="Left" Margin="210,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="310,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="410,410,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+    <!--#endregion-->
     </Grid>
 </Window>

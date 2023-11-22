@@ -20,9 +20,14 @@ namespace TdoT_2048_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+        }
+        private void OnButtonKeyDown(object sender, KeyEventArgs e)
+        {
         }
     }
 }
