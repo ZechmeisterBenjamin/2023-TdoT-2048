@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdoT-2048-Konsole", "TdoT-2048-Konsole\TdoT-2048-Konsole.csproj", "{B9B59A59-405B-41F9-9F51-114956634633}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TdoT-2048-WPF", "TdoT-2048-WPF\TdoT-2048-WPF.csproj", "{98BDCC69-B789-4BD3-A060-F68B61587D0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9B59A59-405B-41F9-9F51-114956634633}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B59A59-405B-41F9-9F51-114956634633}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B59A59-405B-41F9-9F51-114956634633}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B59A59-405B-41F9-9F51-114956634633}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98BDCC69-B789-4BD3-A060-F68B61587D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98BDCC69-B789-4BD3-A060-F68B61587D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98BDCC69-B789-4BD3-A060-F68B61587D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98BDCC69-B789-4BD3-A060-F68B61587D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF132471-71C1-4E46-9BD7-4CCF8012034F}
+	EndGlobalSection
+EndGlobal
