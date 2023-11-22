@@ -22,7 +22,7 @@ namespace TdoT_2048_WPF
     {
         static bool addNmb = false;
         static int score = 0;
-        Button[,] slots = new Button[4, 4];
+        List<List<Button>> slots = new List<List<Button>>();
         public MainWindow()
         {
             InitializeComponent();
@@ -31,31 +31,42 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            MoveCube(e.Key); 
+            MoveCube(e.Key);
+            for(int i = 0; i < slots.Count; i++)
+            {
+                for(int j = 0; j < slots[i].Count; j++)
+                {
+                    MessageBox.Show(slots[i][j].Name);
+                }
             }
+        }
 
         private void MoveCube(Key direction)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
         private void FillSlots()
         {
-            slots[0, 0] = TL;
-            slots[1, 0] = TML;
-            slots[2, 0] = TMR;
-            slots[3, 0] = TR;
-            slots[0, 1] = TML;
-            slots[1, 1] = TMLM;
-            slots[2, 1] = TMRM;
-            slots[3, 1] = TMR;
-            slots[0, 2] = BML;
-            slots[1, 2] = BMLM;
-            slots[2, 2] = BMRM;
-            slots[3, 2] = BMR;
-            slots[0, 3] = BL;
-            slots[1, 3] = BLM;
-            slots[2, 3] = BRM;
-            slots[3, 3] = BR;
+            slots.Add(new List<Button>());
+            slots.Add(new List<Button>());
+            slots.Add(new List<Button>());
+            slots.Add(new List<Button>());
+            slots[0].Add(TL);
+            slots[0].Add(TLM);
+            slots[0].Add(TRM);
+            slots[0].Add(TR);
+            slots[1].Add(TML);
+            slots[1].Add(TMLM);
+            slots[1].Add(TMRM);
+            slots[1].Add(TMR);
+            slots[2].Add(BML);
+            slots[2].Add(BMLM);
+            slots[2].Add(BMRM);
+            slots[2].Add(BMR);
+            slots[3].Add(BL);
+            slots[3].Add(BLM);
+            slots[3].Add(BRM);
+            slots[3].Add(BR);
 
         }
     }
