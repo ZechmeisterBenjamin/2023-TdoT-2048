@@ -27,8 +27,6 @@ namespace TdoT_2048_WPF
         public MainWindow()
         {
             InitializeComponent();
-            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
-            mainWindow.Show();
             FillSlots();
             AddRandomNumbers(slots, 2);
             Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
@@ -63,7 +61,7 @@ namespace TdoT_2048_WPF
                         if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = i;
-                            MoveUp(slots, slot, j, i, cnt, moveAgain);
+                            MoveUp(slots, slot, j, i, cnt);
                         }
                     }
                 }
@@ -77,7 +75,7 @@ namespace TdoT_2048_WPF
                         if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = i;
-                            MoveDown(slots, slot, j, i, cnt, moveAgain);
+                            MoveDown(slots, slot, j, i, cnt);
                         }
                     }
                 }
@@ -91,7 +89,7 @@ namespace TdoT_2048_WPF
                         if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = j;
-                            MoveLeft(slots, slot, j, i, cnt, moveAgain);
+                            MoveLeft(slots, slot, j, i, cnt);
                         }
 
                     }
@@ -106,14 +104,14 @@ namespace TdoT_2048_WPF
                         if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = j;
-                            MoveRight(slots, slot, j, i, cnt, moveAgain);
+                            MoveRight(slots, slot, j, i, cnt);
                         }
 
                     }
                 }
             }
         }
-        private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt)
         {
             while (slot > -1 && cnt < 4)
             {
@@ -132,18 +130,13 @@ namespace TdoT_2048_WPF
                         slots[slot + 1][j].Content = "-";
                         SetScore(slots, slot, j);
                         addNmb = true;
-                        moveAgain = false;
-                    }
-                    if (!moveAgain)
-                    {
-                        break;
                     }
                 }
                 slot--;
                 cnt++;
             }
         }
-        private void MoveDown(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveDown(List<List<Button>> slots, int slot, int j, int i, int cnt)
         {
             while (slot > -1 && cnt < 4)
             {
@@ -162,18 +155,13 @@ namespace TdoT_2048_WPF
                         slots[slot - 1][j].Content = "-";
                         SetScore(slots, slot, j);
                         addNmb = true;
-                        moveAgain = false;
-                    }
-                    if (!moveAgain)
-                    {
-                        break;
                     }
                 }
                 slot++;
                 cnt++;
             }
         }
-        private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt)
         {
             while (slot > -1 && cnt < 4)
             {
@@ -192,18 +180,13 @@ namespace TdoT_2048_WPF
                         slots[i][slot + 1].Content = "-";
                         SetScore(slots, i, slot);
                         addNmb = true;
-                        moveAgain = false;
-                    }
-                    if (!moveAgain)
-                    {
-                        break;
                     }
                 }
                 slot--;
                 cnt++;
             }
         }
-        private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt)
         {
             while (slot > -1 && cnt < 4)
             {
@@ -222,11 +205,6 @@ namespace TdoT_2048_WPF
                         slots[i][slot - 1].Content = "-";
                         SetScore(slots, i, slot);
                         addNmb = true;
-                        moveAgain = false;
-                    }
-                    if (!moveAgain)
-                    {
-                        break;
                     }
                 }
                 slot++;
@@ -239,6 +217,7 @@ namespace TdoT_2048_WPF
         }
         private void AddRandomNumbers(List<List<Button>> buttons, int amount)
         {
+            ResetColor();
             Random rnd = new Random();
             bool again;
             int i = 0, firstValue = 0;
@@ -268,8 +247,11 @@ namespace TdoT_2048_WPF
                 i++;
             }
             addNmb = false;
+            ColorNumbers();
         }
-        private static bool IsGameOver(List<List<Button>> slots)
+
+
+        private bool IsGameOver(List<List<Button>> slots)
         {
             bool gameOver = true;
             for (int i = 0; i < slots.Count; i++)
@@ -320,6 +302,63 @@ namespace TdoT_2048_WPF
                     slots[i][j].Content = "-";
             score = 0;
 
+        }
+        private void ColorNumbers()
+        {
+            for(int i = 0; i < slots.Count; i++)
+                for(int j = 0; j < slots[i].Count; j++)
+                {
+            if (slots[i][j].Content.ToString() == "2")
+            {
+                slots[i][j].Background = Brushes.Cyan;
+            }
+            else if (slots[i][j].Content.ToString() == "4")
+            {
+                slots[i][j].Background = Brushes.DarkCyan;
+            }
+            else if (slots[i][j].Content.ToString() == "8")
+            {
+                slots[i][j].Background = Brushes.Green;
+            }
+            else if (slots[i][j].Content.ToString() == "16")
+            {
+                slots[i][j].Background = Brushes.DarkGreen;
+            }
+            else if (slots[i][j].Content.ToString() == "32")
+            {
+                slots[i][j].Background = Brushes.Red;
+            }
+            else if (slots[i][j].Content.ToString() == "64")
+            {
+                slots[i][j].Background = Brushes.DarkRed;
+            }
+            else if (slots[i][j].Content.ToString() == "128")
+            {
+                slots[i][j].Background = Brushes.Yellow;
+            }
+            else if (slots[i][j].Content.ToString() == "256")
+            {
+                slots[i][j].Background = Brushes.Blue;
+            }
+            else if (slots[i][j].Content.ToString() == "512")
+            {
+                slots[i][j].Background = Brushes.DarkBlue;
+            }
+            else if (slots[i][j].Content.ToString() == "1024")
+            {
+                        slots[i][j].Background = Brushes.White;
+            }
+            else if (slots[i][j].Content.ToString() == "2048")
+            {
+                slots[i][j].Background = Brushes.Magenta;
+            }
+                }
+        }
+        private void ResetColor()
+        {
+            for(int i = 0; i < slots.Count; i++)
+                for(int j = 0; j < slots[i].Count; j++)
+                    slots[i][j].Background = Brushes.Transparent;
         }
     }
 }
