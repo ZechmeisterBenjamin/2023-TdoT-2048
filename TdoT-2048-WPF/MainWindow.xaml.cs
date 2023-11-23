@@ -164,7 +164,33 @@ namespace TdoT_2048_WPF
         }
         private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
-            //throw new NotImplementedException();
+            while (slot > -1 && cnt < 4)
+            {
+                if (slot != 3 && slot >= 0 & slot != j)
+                {
+                    if (slots[i][slot].Content.ToString() == "-")
+                    {
+                        slots[i][slot].Content = slots[i][slot + 1].Content;
+                        slots[i][slot + 1].Content = "-";
+                        addNmb = true;
+                    }
+                    else if (slots[i][slot].Content == slots[i][slot + 1].Content)
+                    {
+                        int slotInt = int.Parse(slots[i][slot].Content.ToString());
+                        slots[i][slot].Content = (slotInt * 2).ToString();
+                        slots[i][slot + 1].Content = "-";
+                        SetScore(slots, i, slot);
+                        addNmb = true;
+                        moveAgain = false;
+                    }
+                    if (!moveAgain)
+                    {
+                        break;
+                    }
+                }
+                slot--;
+                cnt++;
+            }
         }
         private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
