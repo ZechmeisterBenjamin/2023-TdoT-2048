@@ -46,7 +46,7 @@ namespace TdoT_2048_WPF
                 {
                     for (int j = 0; j < slots[i].Count; j++)
                     {
-                        if (slots[i][j].ToString() != "-")
+                        if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = i;
                             MoveUp(slots, slot, j, i, cnt, moveAgain);
@@ -60,7 +60,7 @@ namespace TdoT_2048_WPF
                 {
                     for (int j = slots[i].Count - 1; j >= 0; j--)
                     {
-                        if (slots[i][j].ToString() != "-")
+                        if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = i;
                             MoveDown(slots, slot, j, i, cnt, moveAgain);
@@ -74,7 +74,7 @@ namespace TdoT_2048_WPF
                 {
                     for (int j = 0; j < slots[i].Count; j++)
                     {
-                        if (slots[i][j].ToString() != "-")
+                        if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = j;
                             MoveLeft(slots, slot, j, i, cnt, moveAgain);
@@ -89,7 +89,7 @@ namespace TdoT_2048_WPF
                 {
                     for (int j = slots[i].Count - 1; j >= 0; j--)
                     {
-                        if (slots[i][j].ToString() != "-")
+                        if (slots[i][j].Content.ToString() != "-")
                         {
                             slot = j;
                             MoveRight(slots, slot, j, i, cnt, moveAgain);
@@ -100,26 +100,55 @@ namespace TdoT_2048_WPF
             }
         }
 
-        private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
-            throw new NotImplementedException();
+            while (slot > -1 && cnt < 4)
+            {
+                if (slot != 3 && slot >= 0 && slot != i)
+                {
+                    if (slots[slot][j].Content.ToString() == "-")
+                    {
+                        slots[slot][j].Content = slots[slot + 1][j].Content;
+                        slots[slot + 1][j].Content = "-";
+                        addNmb = true;
+                    }
+                    else if (slots[slot][j].Content == slots[slot + 1][j].Content)
+                    {
+                        int slotInt = int.Parse(slots[slot][j].Content.ToString());
+                        slots[slot][j].Content = (slotInt * 2).ToString();
+                        slots[slot + 1][j].Content = "-";
+                        SetScore(slots, slot, j);
+                        addNmb = true;
+                        moveAgain = false;
+                    }
+                    if (!moveAgain)
+                    {
+                        break;
+                    }
+                }
+                slot--;
+                cnt++;
+            }
         }
 
-        private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
-        {
-            throw new NotImplementedException();
-        }
 
         private void MoveDown(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
-
-        private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+        }
+        private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        {
+            //throw new NotImplementedException();
         }
 
+        private void SetScore(List<List<Button>> slots, int slot, int j)
+        {
+            score += int.Parse(slots[slot][j].Content.ToString());
+        }
         private void AddRandomNumbers(List<List<Button>> buttons, int amount)
         {
             Random rnd = new Random();
