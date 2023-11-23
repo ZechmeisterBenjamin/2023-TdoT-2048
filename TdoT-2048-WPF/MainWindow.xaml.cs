@@ -33,21 +33,30 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Down ||e.Key == Key.Up ||e.Key == Key.Left || e.Key == Key.Right)
-            {
-            if (IsGameOver(slots)) MessageBox.Show("Its Joever :(");
-            else
-                {
-            MoveNumbers(e.Key);
-            if(addNmb)
-            AddRandomNumbers(slots, 1);
-            addNmb = false;
-                }
-            }
-            else if(e.Key == Key.R)
+            if(e.Key == Key.R)
             {
                 ClearGame();
                 AddRandomNumbers(slots, 2);
+            }
+            if(e.Key == Key.Enter && username_txtbx.Foreground == Brushes.Gray)
+            {
+                MessageBox.Show("test");
+            }
+            else if(e.Key == Key.Down ||e.Key == Key.Up ||e.Key == Key.Left || e.Key == Key.Right)
+            {
+                if (IsGameOver(slots))
+                {
+                   MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
+                    username_txtbx.Visibility = Visibility.Visible;
+                    confirm_btn.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    MoveNumbers(e.Key);
+                    if (addNmb)
+                        AddRandomNumbers(slots, 1);
+                    addNmb = false;
+                }
             }
         }
         private void MoveNumbers(Key direction)
@@ -252,8 +261,6 @@ namespace TdoT_2048_WPF
             addNmb = false;
             ColorNumbers();
         }
-
-
         private bool IsGameOver(List<List<Button>> slots)
         {
             bool gameOver = true;
@@ -273,11 +280,11 @@ namespace TdoT_2048_WPF
                         if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
                         else if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
                         }
-                        else if (i == slots.Count - 1 && j != slots[i].Count)
+                        else if (i == slots.Count - 1 && j != slots[i].Count - 1)
                         {
                             if (slots[i][j].Content.ToString() == slots[i][j+1].Content.ToString()) gameOver = false;
                         }
-                        else if (j == slots[i].Count - 1 && i != slots.Count)
+                        else if (j == slots[i].Count - 1 && i != slots.Count - 1)
                         {
                             if (slots[i][j].Content.ToString() == slots[i+1][j].Content.ToString()) gameOver = false;
                         }
@@ -373,6 +380,30 @@ namespace TdoT_2048_WPF
             for(int i = 0; i < slots.Count; i++)
                 for(int j = 0; j < slots[i].Count; j++)
                     slots[i][j].Background = Brushes.Transparent;
+        }
+        private void username_txtbx_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (username_txtbx.Foreground == Brushes.Gray)
+                username_txtbx.Text = null;
+            username_txtbx.Foreground = Brushes.Black;
+        }
+        private void username_txtbx_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(username_txtbx.Text))
+            {
+                username_txtbx.Text = "Anzeigenamen hier eingeben";
+                username_txtbx.Foreground = Brushes.Gray;
+            }
+        }
+
+        private void confirm_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (username_txtbx.Foreground != Brushes.Gray)
+            {
+                MessageBox.Show(username_txtbx.Text);
+                username_txtbx.Visibility = Visibility.Hidden;
+                confirm_btn.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

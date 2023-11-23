@@ -31,5 +31,7 @@
         <ListBox Margin="425,55,25,94" Height="400">
             
         </ListBox>
+        <TextBox Visibility="Hidden" Margin="425,55,25,0" FontSize="20" Name="username_txtbx" GotFocus="username_txtbx_GotFocus" LostFocus="username_txtbx_LostFocus" Foreground="Gray">Anzeigenamen hier angeben</TextBox>
+        <Button Margin="425,134,25,294" FontSize="20" Name="confirm_btn" Click="confirm_btn_Click" Background="Transparent" Visibility="Hidden">Bestätigen</Button>
     </Grid>
 </Window>
