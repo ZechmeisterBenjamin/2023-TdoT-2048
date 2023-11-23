@@ -25,5 +25,6 @@
         <Button Name="BLM" Content="-" HorizontalAlignment="Left" Margin="110,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Name="BRM" Content="-" HorizontalAlignment="Left" Margin="210,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Name="BR" Content="-" HorizontalAlignment="Left" Margin="310,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
+        <TextBlock Text="Score: " FontSize="25" TextAlignment="Left" Margin="10,420,525,0" Name="score_txtbk"></TextBlock>
     </Grid>
 </Window>
