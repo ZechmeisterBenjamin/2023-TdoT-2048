@@ -23,7 +23,6 @@ namespace TdoT_2048_WPF
     {
         static bool addNmb = false;
         static int score = 0;
-        bool again = true;
         List<List<Button>> slots = new List<List<Button>>();
         public MainWindow()
         {
@@ -36,11 +35,19 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
+            if(e.Key == Key.Down ||e.Key == Key.Up ||e.Key == Key.Left || e.Key == Key.Right)
+            {
             MoveNumbers(e.Key);
+            if (IsGameOver(slots)) MessageBox.Show("Its Joever :(");
             if(addNmb)
             AddRandomNumbers(slots, 1);
             addNmb = false;
-            if (IsGameOver(slots)) MessageBox.Show("Its Joever :(");
+            }
+            else if(e.Key == Key.R)
+            {
+                ClearGame();
+                AddRandomNumbers(slots, 2);
+            }
         }
         private void MoveNumbers(Key direction)
         {
@@ -304,6 +311,14 @@ namespace TdoT_2048_WPF
             slots[3].Add(BLM);
             slots[3].Add(BRM);
             slots[3].Add(BR);
+
+        }
+        private void ClearGame()
+        {
+            for (int i = 0; i < slots.Count; i++)
+                for (int j = 0; j < slots[i].Count; j++)
+                    slots[i][j].Content = "-";
+            score = 0;
 
         }
     }
