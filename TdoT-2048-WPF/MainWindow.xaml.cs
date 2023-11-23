@@ -273,45 +273,11 @@ namespace TdoT_2048_WPF
                     }
             if (gameOver)
             {
-                for (int i = 0; i < slots.Count; i++)
-                    for (int j = 0; j < slots[i].Count; j++)
+                for (int i = 0; i < slots.Count - 1 && gameOver; i++)
+                    for (int j = 0; j < slots[i].Count - 1 && gameOver; j++)
                     {
-                        if (i == 0 && j == 0)
-                        {
-                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
-                        else if (i == 0 && j == 3)
-                        {
-                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
-                        }
-                        else if (i == 3 && j == 0)
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
-                        else if (i == 3 && j == 3)
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
-                        }
-                        else if (i == 0)
-                        {
-                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
-                        else if (i == 3)
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
-                        else if (j == 0)
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
-                        else if (j == 3)
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
-                        }
-                        else
-                        {
-                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
-                        }
+                        if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
+                        else if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
                     }
             }
             return gameOver;

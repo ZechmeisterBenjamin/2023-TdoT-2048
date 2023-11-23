@@ -14,14 +14,14 @@ namespace _2048_Spiel
 
         static void Main()
         {
-            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            /*string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             path = path.Remove(path.LastIndexOf((char)92));
             StreamReader fileSr = new StreamReader(path + "/highscore.txt");
             string line = fileSr.ReadLine();
             if (line != null) highscore = int.Parse(line);
             else highscore = 0;
             fileSr.Close();
-            StreamWriter fileSw = new StreamWriter(path + "/highscore.txt");
+            StreamWriter fileSw = new StreamWriter(path + "/highscore.txt");*/
             Console.CursorVisible = false;
             string[,] slots = new string[4, 4];
             for (int i = 0; i < slots.GetLength(0); i++)
@@ -42,8 +42,8 @@ namespace _2048_Spiel
             Console.Clear();
             highscore = GetHighscore(score, highscore);
             Console.WriteLine($"Game Over\nScore: {score} \t highscore: {highscore}");
-            fileSw.Write(highscore.ToString());
-            fileSw.Close();
+            /*fileSw.Write(highscore.ToString());
+            fileSw.Close();*/
             Console.ReadLine();
         }
 
