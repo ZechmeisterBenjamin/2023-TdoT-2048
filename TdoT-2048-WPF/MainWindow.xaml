@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TdoT_2048_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="500" MinWidth="750" MaxHeight="500" MaxWidth="750" FontSize="50"
+        Title="MainWindow" MinHeight="500" MinWidth="750" MaxHeight="500" MaxWidth="750" FontSize="35"
         Name="Main_Window">
     <Grid>
         <!--#region -->

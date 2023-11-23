@@ -28,17 +28,11 @@ namespace TdoT_2048_WPF
             InitializeComponent();
             FillSlots();
             Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+            AddRandomNumbers(slots, 2);
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
             MoveCube(e.Key);
-            for(int i = 0; i < slots.Count; i++)
-            {
-                for(int j = 0; j < slots[i].Count; j++)
-                {
-                    MessageBox.Show(slots[i][j].Name);
-                }
-            }
         }
 
         private void MoveCube(Key direction)
@@ -47,7 +41,35 @@ namespace TdoT_2048_WPF
         }
         private void AddRandomNumbers(List<List<Button>> buttons, int amount)
         {
-
+            Random rnd = new Random();
+            bool again;
+            int i = 0, firstValue = 0;
+            int slot = 0;
+            while (i < amount)
+            {
+                if (i == 1) firstValue = slot;
+                do
+                {
+                    slot = rnd.Next(0, 11);
+                    int slot1 = rnd.Next(0, slots.Count);
+                    int slot2 = rnd.Next(0, slots[slot1].Count);
+                    if (slots[slot1][slot2].Content.ToString() == "-")
+                    {
+                        if (slot != 10 || firstValue == 4)
+                        {
+                            slots[slot1][slot2].Content = "2000";
+                        }
+                        else
+                        {
+                            slots[slot1][slot2].Content = "4";
+                        }
+                        again = false;
+                    }
+                    else again = true;
+                } while (again);
+                i++;
+            }
+            addNmb = false;
         }
         private void FillSlots()
         {
