@@ -28,7 +28,7 @@
         <TextBlock Text="Score: " FontSize="25" TextAlignment="Left" Margin="10,420,525,0" Name="score_txtbk"></TextBlock>
         <TextBlock Text="Leaderbord: " FontSize="25" TextAlignment="Left" Margin="425,10,110,410" Name="leaderbord_txtbk"></TextBlock>
             
-        <ListBox Margin="425,55,25,94" Height="400">
+        <ListBox Margin="425,55,25,94" Height="400" Name="leaderbord_lbx">
             
         </ListBox>
         <TextBox Visibility="Hidden" Margin="425,55,25,0" FontSize="20" Name="username_txtbx" GotFocus="username_txtbx_GotFocus" LostFocus="username_txtbx_LostFocus" Foreground="Gray">Anzeigenamen hier angeben</TextBox>

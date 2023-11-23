@@ -400,7 +400,7 @@ namespace TdoT_2048_WPF
         {
             if (username_txtbx.Foreground != Brushes.Gray)
             {
-                MessageBox.Show(username_txtbx.Text);
+                leaderbord_lbx.Items.Add(username_txtbx.Text + ": " + score);
                 username_txtbx.Visibility = Visibility.Hidden;
                 confirm_btn.Visibility = Visibility.Hidden;
             }
