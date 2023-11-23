@@ -32,11 +32,11 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            MoveCube(e.Key);
+            MoveNumbers(e.Key);
             AddRandomNumbers(slots, 1);
         }
 
-        private void MoveCube(Key direction)
+        private void MoveNumbers(Key direction)
         {
             bool moveAgain = true;
             int slot;
@@ -100,7 +100,6 @@ namespace TdoT_2048_WPF
                 }
             }
         }
-
         private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
             while (slot > -1 && cnt < 4)
@@ -131,8 +130,6 @@ namespace TdoT_2048_WPF
                 cnt++;
             }
         }
-
-
         private void MoveDown(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
         {
             while (slot > -1 && cnt < 4)
@@ -223,7 +220,6 @@ namespace TdoT_2048_WPF
                 cnt++;
             }
         }
-
         private void SetScore(List<List<Button>> slots, int slot, int j)
         {
             score += int.Parse(slots[slot][j].Content.ToString());
@@ -259,6 +255,60 @@ namespace TdoT_2048_WPF
                 i++;
             }
             addNmb = false;
+        }
+        private static bool IsGameOver(List<List<Button>> slots)
+        {
+            bool gameOver = true;
+            for (int i = 0; i < slots.Count; i++)
+                for (int j = 0; j < slots[i].Count; j++)
+                    if (slots[i][j].Content == "-")
+                    {
+                        gameOver = false;
+                    }
+            if (gameOver)
+            {
+                for (int i = 0; i < slots.Count; i++)
+                    for (int j = 0; j < slots[i].Count; j++)
+                    {
+                        if (i == 0 && j == 0)
+                        {
+                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                        else if (i == 0 && j == 3)
+                        {
+                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
+                        }
+                        else if (i == 3 && j == 0)
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                        else if (i == 3 && j == 3)
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
+                        }
+                        else if (i == 0)
+                        {
+                            if (slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                        else if (i == 3)
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                        else if (j == 0)
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                        else if (j == 3)
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[i][j - 1].Content) gameOver = true;
+                        }
+                        else
+                        {
+                            if (slots[i][j].Content != slots[i - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content && slots[i][j].Content != slots[j - 1][j].Content && slots[i][j].Content != slots[i][j + 1].Content) gameOver = true;
+                        }
+                    }
+            }
+            return gameOver;
         }
         private void FillSlots()
         {
