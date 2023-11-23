@@ -22,20 +22,27 @@ namespace TdoT_2048_WPF
     {
         static bool addNmb = false;
         static int score = 0;
+        bool again = true;
         List<List<Button>> slots = new List<List<Button>>();
         public MainWindow()
         {
             InitializeComponent();
             FillSlots();
-            Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
             AddRandomNumbers(slots, 2);
+            Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+            do
+            {
+                if (addNmb)
+                    AddRandomNumbers(slots, 1);
+                addNmb = false;
+                if (IsGameOver(slots)) MessageBox.Show("Ende");
+            } while (again);
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
             MoveNumbers(e.Key);
             AddRandomNumbers(slots, 1);
         }
-
         private void MoveNumbers(Key direction)
         {
             bool moveAgain = true;
@@ -112,7 +119,7 @@ namespace TdoT_2048_WPF
                         slots[slot + 1][j].Content = "-";
                         addNmb = true;
                     }
-                    else if (slots[slot][j].Content == slots[slot + 1][j].Content)
+                    else if (slots[slot][j].Content.ToString() == slots[slot + 1][j].Content.ToString())
                     {
                         int slotInt = int.Parse(slots[slot][j].Content.ToString());
                         slots[slot][j].Content = (slotInt * 2).ToString();
@@ -142,7 +149,7 @@ namespace TdoT_2048_WPF
                         slots[slot - 1][j].Content = "-";
                         addNmb = true;
                     }
-                    else if (slots[slot][j].Content == slots[slot - 1][j].Content)
+                    else if (slots[slot][j].Content.ToString() == slots[slot - 1][j].Content.ToString())
                     {
                         int slotInt = int.Parse(slots[slot][j].Content.ToString());
                         slots[slot][j].Content = (slotInt * 2).ToString();
@@ -172,7 +179,7 @@ namespace TdoT_2048_WPF
                         slots[i][slot + 1].Content = "-";
                         addNmb = true;
                     }
-                    else if (slots[i][slot].Content == slots[i][slot + 1].Content)
+                    else if ( slots[i][slot].Content.ToString() == slots[i][slot + 1].Content.ToString())
                     {
                         int slotInt = int.Parse(slots[i][slot].Content.ToString());
                         slots[i][slot].Content = (slotInt * 2).ToString();
@@ -202,7 +209,7 @@ namespace TdoT_2048_WPF
                         slots[i][slot - 1].Content = "-";
                         addNmb = true;
                     }
-                    else if (slots[i][slot].Content == slots[i][slot - 1].Content)
+                    else if (slots[i][slot].Content.ToString() == slots[i][slot - 1].Content.ToString())
                     {
                         int slotInt = int.Parse(slots[i][slot].Content.ToString());
                         slots[i][slot].Content = (slotInt * 2).ToString();
@@ -261,7 +268,7 @@ namespace TdoT_2048_WPF
             bool gameOver = true;
             for (int i = 0; i < slots.Count; i++)
                 for (int j = 0; j < slots[i].Count; j++)
-                    if (slots[i][j].Content == "-")
+                    if (slots[i][j].Content.ToString() == "-")
                     {
                         gameOver = false;
                     }
