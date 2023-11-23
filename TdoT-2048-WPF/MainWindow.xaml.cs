@@ -37,8 +37,89 @@ namespace TdoT_2048_WPF
 
         private void MoveCube(Key direction)
         {
-            //throw new NotImplementedException();
+            bool moveAgain = true;
+            int slot;
+            int cnt = 0;
+            if (direction == Key.Up)
+            {
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    for (int j = 0; j < slots[i].Count; j++)
+                    {
+                        if (slots[i][j].ToString() != "-")
+                        {
+                            slot = i;
+                            MoveUp(slots, slot, j, i, cnt, moveAgain);
+                        }
+                    }
+                }
+            }
+            else if (direction == Key.Down)
+            {
+                for (int i = slots.Count - 1; i >= 0; i--)
+                {
+                    for (int j = slots[i].Count - 1; j >= 0; j--)
+                    {
+                        if (slots[i][j].ToString() != "-")
+                        {
+                            slot = i;
+                            MoveDown(slots, slot, j, i, cnt, moveAgain);
+                        }
+                    }
+                }
+            }
+            else if (direction == Key.Left)
+            {
+                for (int i = 0; i < slots.Count; i++)
+                {
+                    for (int j = 0; j < slots[i].Count; j++)
+                    {
+                        if (slots[i][j].ToString() != "-")
+                        {
+                            slot = j;
+                            MoveLeft(slots, slot, j, i, cnt, moveAgain);
+                        }
+
+                    }
+                }
+            }
+            else if (direction == Key.Right)
+            {
+                for (int i = slots.Count - 1; i >= 0; i--)
+                {
+                    for (int j = slots[i].Count - 1; j >= 0; j--)
+                    {
+                        if (slots[i][j].ToString() != "-")
+                        {
+                            slot = j;
+                            MoveRight(slots, slot, j, i, cnt, moveAgain);
+                        }
+
+                    }
+                }
+            }
         }
+
+        private void MoveRight(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MoveLeft(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MoveDown(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void MoveUp(List<List<Button>> slots, int slot, int j, int i, int cnt, bool moveAgain)
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddRandomNumbers(List<List<Button>> buttons, int amount)
         {
             Random rnd = new Random();
@@ -57,7 +138,7 @@ namespace TdoT_2048_WPF
                     {
                         if (slot != 10 || firstValue == 4)
                         {
-                            slots[slot1][slot2].Content = "2000";
+                            slots[slot1][slot2].Content = "2";
                         }
                         else
                         {
