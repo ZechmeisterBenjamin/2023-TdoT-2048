@@ -36,10 +36,13 @@ namespace TdoT_2048_WPF
             if(e.Key == Key.Down ||e.Key == Key.Up ||e.Key == Key.Left || e.Key == Key.Right)
             {
             if (IsGameOver(slots)) MessageBox.Show("Its Joever :(");
+            else
+                {
             MoveNumbers(e.Key);
             if(addNmb)
             AddRandomNumbers(slots, 1);
             addNmb = false;
+                }
             }
             else if(e.Key == Key.R)
             {
@@ -262,11 +265,22 @@ namespace TdoT_2048_WPF
                     }
             if (gameOver)
             {
-                for (int i = 0; i < slots.Count - 1 && gameOver; i++)
-                    for (int j = 0; j < slots[i].Count - 1 && gameOver; j++)
+                for (int i = 0; i < slots.Count && gameOver; i++)
+                    for (int j = 0; j < slots[i].Count && gameOver; j++)
                     {
+                        if(i < slots.Count - 1 && j < slots[i].Count - 1)
+                        {
                         if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
                         else if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
+                        }
+                        else if (i == slots.Count - 1 && j != slots[i].Count)
+                        {
+                            if (slots[i][j].Content.ToString() == slots[i][j+1].Content.ToString()) gameOver = false;
+                        }
+                        else if (j == slots[i].Count - 1 && i != slots.Count)
+                        {
+                            if (slots[i][j].Content.ToString() == slots[i+1][j].Content.ToString()) gameOver = false;
+                        }
                     }
             }
             return gameOver;
