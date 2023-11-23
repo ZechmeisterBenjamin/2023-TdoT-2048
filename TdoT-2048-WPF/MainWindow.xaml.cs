@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,21 +28,19 @@ namespace TdoT_2048_WPF
         public MainWindow()
         {
             InitializeComponent();
+            MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+            mainWindow.Show();
             FillSlots();
             AddRandomNumbers(slots, 2);
             Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
-            do
-            {
-                if (addNmb)
-                    AddRandomNumbers(slots, 1);
-                addNmb = false;
-                if (IsGameOver(slots)) MessageBox.Show("Ende");
-            } while (again);
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
             MoveNumbers(e.Key);
+            if(addNmb)
             AddRandomNumbers(slots, 1);
+            addNmb = false;
+            if (IsGameOver(slots)) MessageBox.Show("Its Joever :(");
         }
         private void MoveNumbers(Key direction)
         {
