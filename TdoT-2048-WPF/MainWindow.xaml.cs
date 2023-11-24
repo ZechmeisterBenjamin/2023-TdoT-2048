@@ -42,13 +42,14 @@ namespace TdoT_2048_WPF
                 ClearGame();
                 AddRandomNumbers(slots, 2);
             }
-            else if (e.Key == Key.Down || e.Key == Key.Up || e.Key == Key.Left || e.Key == Key.Right)
+            if (e.Key == Key.Down || e.Key == Key.Up || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Q)
             {
-                if (IsGameOver(slots))
+                if (IsGameOver(slots) || e.Key == Key.Q && !username_txtbx.Focus())
                 {
                     MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
                     username_txtbx.Visibility = Visibility.Visible;
                     confirm_btn.Visibility = Visibility.Visible;
+                    username_txtbx.Clear();
                     username_txtbx.Focus();
                 }
                 else
@@ -323,6 +324,7 @@ namespace TdoT_2048_WPF
                 for (int j = 0; j < slots[i].Count; j++)
                     slots[i][j].Content = "-";
             score = 0;
+            score_txtbk.Text = "Score: " + score.ToString();
 
         }
         private void ColorNumbers()
@@ -363,6 +365,7 @@ namespace TdoT_2048_WPF
                     else if (slots[i][j].Content.ToString() == "256")
                     {
                         slots[i][j].Background = Brushes.Blue;
+                        slots[i][j].Foreground = Brushes.White;
                     }
                     else if (slots[i][j].Content.ToString() == "512")
                     {
@@ -444,7 +447,7 @@ namespace TdoT_2048_WPF
         }
         private void SaveScore()
         {
-            File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"{score};{username.Replace(";", "")};\n");
+            File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"\n{score};{username.Replace(";", "")};");
             FillLeaderboard();
         }
     }
@@ -459,4 +462,3 @@ namespace TdoT_2048_WPF
         }
     }
 }
-
