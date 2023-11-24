@@ -24,12 +24,14 @@ namespace TdoT_2048_WPF
     {
         static bool addNmb = false;
         static int score = 0;
+        static string username = "";
         List<List<Button>> slots = new List<List<Button>>();
         public MainWindow()
         {
             InitializeComponent();
             FillSlots();
             AddRandomNumbers(slots, 2);
+            FillLeaderboard();
             Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
@@ -46,6 +48,7 @@ namespace TdoT_2048_WPF
                     MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
                     username_txtbx.Visibility = Visibility.Visible;
                     confirm_btn.Visibility = Visibility.Visible;
+                    username_txtbx.Focus();
                 }
                 else
                 {
@@ -398,19 +401,62 @@ namespace TdoT_2048_WPF
             if (username_txtbx.Foreground != Brushes.Gray)
             {
                 Leaderboard_lbx.Items.Add(username_txtbx.Text + ": " + score);
+                username = username_txtbx.Text;
                 username_txtbx.Visibility = Visibility.Hidden;
                 confirm_btn.Visibility = Visibility.Hidden;
                 username_txtbx.Foreground = Brushes.Gray;
                 username_txtbx.Text = "Anzeigenamen hier angeben";
+                SaveScore();
             }
         }
         private void FillLeaderboard()
         {
+            List<string> scores = new List<string>();
+            scores = File.ReadAllLines("./scores.txt").ToList();
+            Leaderboard_lbx.Items.Clear();
+            List<Score> leaderboard = ToScore(scores);
+            for(int i = 0; i < scores.Count; i++)
+            {
+                int nmb = int.Parse(scores[i].Split(";")[0]) ;
+                string name = scores[i].Trim().Split(";")[1] ;
+                Leaderboard_lbx.Items.Add(name + ": " + nmb);
+            }
+        }
+
+        private List<Score> ToScore(List<string> scores)
+        {
+            List<Score> output = new List<Score>();
+            for(int i = 1; i < scores.Count;i++)
+            {
+            output.Add(new Score(scores[i].Split(";")[1], int.Parse(scores[i].Split(";")[0])));
+            }
+            return output;
 
         }
+        private void Sort(List<Score> leaderboard)
+        {
+            List<Score> output = new List<Score>();
+            output.Add(leaderboard[0]);
+            for(int i = 1; i <  leaderboard.Count; i++)
+            {
+                if (leaderboard[])
+            }
+        }
+
         private void SaveScore()
         {
-            File.WriteAllText("scores.txt", $"{username_txtbx.Text};{score}");
+            File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"{score};{username.Replace(";", "")};\n");
+            FillLeaderboard();
+        }
+    }
+    class Score
+    {
+        public string User { get; set; }
+        public int Nmb { get; set; }
+        public Score(string user, int nmb)
+        {
+            this.User = user;
+            this.Nmb = nmb;
         }
     }
 }
