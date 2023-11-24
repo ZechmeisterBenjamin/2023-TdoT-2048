@@ -1,0 +1,12 @@
+1440;Leon Wagner;
+4452;Lampi;
+2408;Zechi;
+2660;Patrick;
+252;Florian;
+2624;Grurl;
+1252;René;
+472;Jakob;
+2770;Manu;
+2240;Jonas;
+2072;Tobi;
+1308;0;
