@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -33,20 +34,16 @@ namespace TdoT_2048_WPF
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.R)
+            if (e.Key == Key.R && !username_txtbx.Focus())
             {
                 ClearGame();
                 AddRandomNumbers(slots, 2);
             }
-            if(e.Key == Key.Enter && username_txtbx.Foreground == Brushes.Gray)
-            {
-                MessageBox.Show("test");
-            }
-            else if(e.Key == Key.Down ||e.Key == Key.Up ||e.Key == Key.Left || e.Key == Key.Right)
+            else if (e.Key == Key.Down || e.Key == Key.Up || e.Key == Key.Left || e.Key == Key.Right)
             {
                 if (IsGameOver(slots))
                 {
-                   MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
+                    MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
                     username_txtbx.Visibility = Visibility.Visible;
                     confirm_btn.Visibility = Visibility.Visible;
                 }
@@ -184,7 +181,7 @@ namespace TdoT_2048_WPF
                         slots[i][slot + 1].Content = "-";
                         addNmb = true;
                     }
-                    else if ( slots[i][slot].Content.ToString() == slots[i][slot + 1].Content.ToString())
+                    else if (slots[i][slot].Content.ToString() == slots[i][slot + 1].Content.ToString())
                     {
                         int slotInt = int.Parse(slots[i][slot].Content.ToString());
                         slots[i][slot].Content = (slotInt * 2).ToString();
@@ -275,18 +272,18 @@ namespace TdoT_2048_WPF
                 for (int i = 0; i < slots.Count && gameOver; i++)
                     for (int j = 0; j < slots[i].Count && gameOver; j++)
                     {
-                        if(i < slots.Count - 1 && j < slots[i].Count - 1)
+                        if (i < slots.Count - 1 && j < slots[i].Count - 1)
                         {
-                        if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
-                        else if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
+                            if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
+                            else if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
                         }
                         else if (i == slots.Count - 1 && j != slots[i].Count - 1)
                         {
-                            if (slots[i][j].Content.ToString() == slots[i][j+1].Content.ToString()) gameOver = false;
+                            if (slots[i][j].Content.ToString() == slots[i][j + 1].Content.ToString()) gameOver = false;
                         }
                         else if (j == slots[i].Count - 1 && i != slots.Count - 1)
                         {
-                            if (slots[i][j].Content.ToString() == slots[i+1][j].Content.ToString()) gameOver = false;
+                            if (slots[i][j].Content.ToString() == slots[i + 1][j].Content.ToString()) gameOver = false;
                         }
                     }
             }
@@ -326,59 +323,59 @@ namespace TdoT_2048_WPF
         }
         private void ColorNumbers()
         {
-            for(int i = 0; i < slots.Count; i++)
-                for(int j = 0; j < slots[i].Count; j++)
+            for (int i = 0; i < slots.Count; i++)
+                for (int j = 0; j < slots[i].Count; j++)
                 {
-            if (slots[i][j].Content.ToString() == "2")
-            {
-                slots[i][j].Background = Brushes.Cyan;
-            }
-            else if (slots[i][j].Content.ToString() == "4")
-            {
-                slots[i][j].Background = Brushes.DarkCyan;
-            }
-            else if (slots[i][j].Content.ToString() == "8")
-            {
-                slots[i][j].Background = Brushes.Green;
-            }
-            else if (slots[i][j].Content.ToString() == "16")
-            {
-                slots[i][j].Background = Brushes.DarkGreen;
-            }
-            else if (slots[i][j].Content.ToString() == "32")
-            {
-                slots[i][j].Background = Brushes.Red;
-            }
-            else if (slots[i][j].Content.ToString() == "64")
-            {
-                slots[i][j].Background = Brushes.DarkRed;
-            }
-            else if (slots[i][j].Content.ToString() == "128")
-            {
-                slots[i][j].Background = Brushes.Yellow;
-            }
-            else if (slots[i][j].Content.ToString() == "256")
-            {
-                slots[i][j].Background = Brushes.Blue;
-            }
-            else if (slots[i][j].Content.ToString() == "512")
-            {
-                slots[i][j].Background = Brushes.DarkBlue;
-            }
-            else if (slots[i][j].Content.ToString() == "1024")
-            {
+                    if (slots[i][j].Content.ToString() == "2")
+                    {
+                        slots[i][j].Background = Brushes.Cyan;
+                    }
+                    else if (slots[i][j].Content.ToString() == "4")
+                    {
+                        slots[i][j].Background = Brushes.DarkCyan;
+                    }
+                    else if (slots[i][j].Content.ToString() == "8")
+                    {
+                        slots[i][j].Background = Brushes.Green;
+                    }
+                    else if (slots[i][j].Content.ToString() == "16")
+                    {
+                        slots[i][j].Background = Brushes.DarkGreen;
+                    }
+                    else if (slots[i][j].Content.ToString() == "32")
+                    {
+                        slots[i][j].Background = Brushes.Red;
+                    }
+                    else if (slots[i][j].Content.ToString() == "64")
+                    {
+                        slots[i][j].Background = Brushes.DarkRed;
+                    }
+                    else if (slots[i][j].Content.ToString() == "128")
+                    {
+                        slots[i][j].Background = Brushes.Yellow;
+                    }
+                    else if (slots[i][j].Content.ToString() == "256")
+                    {
+                        slots[i][j].Background = Brushes.Blue;
+                    }
+                    else if (slots[i][j].Content.ToString() == "512")
+                    {
+                        slots[i][j].Background = Brushes.DarkBlue;
+                    }
+                    else if (slots[i][j].Content.ToString() == "1024")
+                    {
                         slots[i][j].Background = Brushes.White;
-            }
-            else if (slots[i][j].Content.ToString() == "2048")
-            {
-                slots[i][j].Background = Brushes.Magenta;
-            }
+                    }
+                    else if (slots[i][j].Content.ToString() == "2048")
+                    {
+                        slots[i][j].Background = Brushes.Magenta;
+                    }
                 }
         }
         private void ResetColor()
         {
-            for(int i = 0; i < slots.Count; i++)
-                for(int j = 0; j < slots[i].Count; j++)
+            for (int i = 0; i < slots.Count; i++)
+                for (int j = 0; j < slots[i].Count; j++)
                     slots[i][j].Background = Brushes.Transparent;
         }
         private void username_txtbx_GotFocus(object sender, RoutedEventArgs e)
@@ -391,7 +388,7 @@ namespace TdoT_2048_WPF
         {
             if (string.IsNullOrEmpty(username_txtbx.Text))
             {
-                username_txtbx.Text = "Anzeigenamen hier eingeben";
+                username_txtbx.Text = "Anzeigenamen hier angeben";
                 username_txtbx.Foreground = Brushes.Gray;
             }
         }
@@ -400,10 +397,20 @@ namespace TdoT_2048_WPF
         {
             if (username_txtbx.Foreground != Brushes.Gray)
             {
-                leaderbord_lbx.Items.Add(username_txtbx.Text + ": " + score);
+                Leaderboard_lbx.Items.Add(username_txtbx.Text + ": " + score);
                 username_txtbx.Visibility = Visibility.Hidden;
                 confirm_btn.Visibility = Visibility.Hidden;
+                username_txtbx.Foreground = Brushes.Gray;
+                username_txtbx.Text = "Anzeigenamen hier angeben";
             }
+        }
+        private void FillLeaderboard()
+        {
+
+        }
+        private void SaveScore()
+        {
+            File.WriteAllText("scores.txt", $"{username_txtbx.Text};{score}");
         }
     }
 }
