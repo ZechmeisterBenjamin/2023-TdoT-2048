@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace TdoT_2048_WPF
 {
@@ -331,31 +332,33 @@ namespace TdoT_2048_WPF
                 {
                     if (slots[i][j].Content.ToString() == "2")
                     {
-                        slots[i][j].Background = Brushes.Cyan;
+                        slots[i][j].Background = Brushes.Beige;
                     }
                     else if (slots[i][j].Content.ToString() == "4")
                     {
-                        slots[i][j].Background = Brushes.DarkCyan;
+                        slots[i][j].Background = Brushes.SandyBrown;
                     }
                     else if (slots[i][j].Content.ToString() == "8")
                     {
-                        slots[i][j].Background = Brushes.Green;
+                        slots[i][j].Background = Brushes.DarkRed;
+                        slots[i][j].Foreground = Brushes.White;
                     }
                     else if (slots[i][j].Content.ToString() == "16")
                     {
-                        slots[i][j].Background = Brushes.DarkGreen;
+                        slots[i][j].Background = Brushes.Red;
                     }
                     else if (slots[i][j].Content.ToString() == "32")
                     {
-                        slots[i][j].Background = Brushes.Red;
+                        slots[i][j].Background = Brushes.Orange;
                     }
                     else if (slots[i][j].Content.ToString() == "64")
                     {
-                        slots[i][j].Background = Brushes.DarkRed;
+                        slots[i][j].Background = Brushes.Yellow;
                     }
                     else if (slots[i][j].Content.ToString() == "128")
                     {
-                        slots[i][j].Background = Brushes.Yellow;
+                        slots[i][j].Background = Brushes.DarkBlue;
+                        slots[i][j].Foreground = Brushes.White;
                     }
                     else if (slots[i][j].Content.ToString() == "256")
                     {
@@ -363,15 +366,16 @@ namespace TdoT_2048_WPF
                     }
                     else if (slots[i][j].Content.ToString() == "512")
                     {
-                        slots[i][j].Background = Brushes.DarkBlue;
+                        slots[i][j].Background = Brushes.Magenta;
                     }
                     else if (slots[i][j].Content.ToString() == "1024")
                     {
-                        slots[i][j].Background = Brushes.White;
+                        slots[i][j].Background = Brushes.LightBlue;
                     }
                     else if (slots[i][j].Content.ToString() == "2048")
                     {
-                        slots[i][j].Background = Brushes.Magenta;
+                        slots[i][j].Background = Brushes.Black;
+                        slots[i][j].Foreground = Brushes.White;
                     }
                 }
         }
@@ -379,7 +383,10 @@ namespace TdoT_2048_WPF
         {
             for (int i = 0; i < slots.Count; i++)
                 for (int j = 0; j < slots[i].Count; j++)
+                {
                     slots[i][j].Background = Brushes.Transparent;
+                    slots[i][j].Foreground = Brushes.Black;
+                }
         }
         private void username_txtbx_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -395,7 +402,6 @@ namespace TdoT_2048_WPF
                 username_txtbx.Foreground = Brushes.Gray;
             }
         }
-
         private void confirm_btn_Click(object sender, RoutedEventArgs e)
         {
             if (username_txtbx.Foreground != Brushes.Gray)
@@ -414,35 +420,29 @@ namespace TdoT_2048_WPF
             List<string> scores = new List<string>();
             scores = File.ReadAllLines("./scores.txt").ToList();
             Leaderboard_lbx.Items.Clear();
-            List<Score> leaderboard = ToScore(scores);
-            for(int i = 0; i < scores.Count; i++)
+            List<Score> leaderboard = Sort(ToScore(scores));
+            
+            for(int i = 0; i < leaderboard.Count; i++)
             {
-                int nmb = int.Parse(scores[i].Split(";")[0]) ;
-                string name = scores[i].Trim().Split(";")[1] ;
-                Leaderboard_lbx.Items.Add(name + ": " + nmb);
+                Leaderboard_lbx.Items.Add(leaderboard[i].User + ": " + leaderboard[i].Nmb);
             }
         }
 
         private List<Score> ToScore(List<string> scores)
         {
             List<Score> output = new List<Score>();
-            for(int i = 1; i < scores.Count;i++)
+            for(int i = 0; i < scores.Count;i++)
             {
             output.Add(new Score(scores[i].Split(";")[1], int.Parse(scores[i].Split(";")[0])));
             }
             return output;
 
         }
-        private void Sort(List<Score> leaderboard)
+        private List<Score> Sort(List<Score> leaderboard)
         {
-            List<Score> output = new List<Score>();
-            output.Add(leaderboard[0]);
-            for(int i = 1; i <  leaderboard.Count; i++)
-            {
-                if (leaderboard[])
-            }
-        }
+            return leaderboard.OrderByDescending(s => s.Nmb).ToList();
 
+        }
         private void SaveScore()
         {
             File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"{score};{username.Replace(";", "")};\n");
