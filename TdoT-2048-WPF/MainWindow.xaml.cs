@@ -427,7 +427,6 @@ namespace TdoT_2048_WPF
                 Leaderboard_lbx.Items.Add(leaderboard[i].User + ": " + leaderboard[i].Nmb);
             }
         }
-
         private List<Score> ToScore(List<string> scores)
         {
             List<Score> output = new List<Score>();
