@@ -439,9 +439,9 @@ namespace TdoT_2048_WPF
             Leaderboard_lbx.Items.Clear();
             List<Score> leaderboard = Sort(ToScore(scores));
             
-            for(int i = 0; i < leaderboard.Count; i++)
+            for(int i = 0; i < leaderboard.Count && i < 100; i++)
             {
-                Leaderboard_lbx.Items.Add(leaderboard[i].User + ": " + leaderboard[i].Nmb);
+                Leaderboard_lbx.Items.Add(i+1 + ".: "+ leaderboard[i].User + ": " + leaderboard[i].Nmb);
             }
         }
         private List<Score> ToScore(List<string> scores)
@@ -461,7 +461,7 @@ namespace TdoT_2048_WPF
         }
         private void SaveScore()
         {
-            if(score != 0)
+            if(score != 0 && !string.IsNullOrEmpty(username))
             {
             File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"\n{score};{username.Replace(";", "")};");
             }
