@@ -40,6 +40,7 @@ namespace TdoT_2048_WPF
             if(username_txtbx.IsFocused && e.Key == Key.Enter)
             {
                 confirm_btn_Click(null, null);
+                username_txtbx_LostFocus(null, null);
             }
             if (e.Key == Key.R && !username_txtbx.IsFocused)
             {
@@ -410,9 +411,9 @@ namespace TdoT_2048_WPF
             {
                 username_txtbx.Text = "Anzeigenamen hier angeben";
                 username_txtbx.Foreground = Brushes.Gray;
+            }
             Leaderboard_lbx.Visibility = Visibility.Visible;
                 Leaderboard_txtbk.Text = "Leaderboard: ";
-            }
         }
         private void confirm_btn_Click(object sender, RoutedEventArgs e)
         {
