@@ -33,24 +33,29 @@ namespace TdoT_2048_WPF
             FillSlots();
             AddRandomNumbers(slots, 2);
             FillLeaderboard();
-            Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+            Main_Window.KeyDown += new KeyEventHandler(OnButtonKeyDown); 
         }
         private void OnButtonKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.R && !username_txtbx.Focus())
+            if(username_txtbx.IsFocused && e.Key == Key.Enter)
+            {
+                confirm_btn_Click(null, null);
+            }
+            if (e.Key == Key.R && !username_txtbx.IsFocused)
             {
                 ClearGame();
                 AddRandomNumbers(slots, 2);
             }
-            if (e.Key == Key.Down || e.Key == Key.Up || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Q)
+            if (e.Key == Key.Down || e.Key == Key.Up || e.Key == Key.Left || e.Key == Key.Right || e.Key == Key.Enter)
             {
-                if (IsGameOver(slots) || e.Key == Key.Q && !username_txtbx.Focus())
+                if (IsGameOver(slots) || e.Key == Key.Enter && !username_txtbx.IsFocused)
                 {
+
                     MessageBox.Show("Spiel Vorbei!", "GameOver", MessageBoxButton.OK);
                     username_txtbx.Visibility = Visibility.Visible;
                     confirm_btn.Visibility = Visibility.Visible;
-                    username_txtbx.Clear();
                     username_txtbx.Focus();
+                    username_txtbx.Clear();
                 }
                 else
                 {
@@ -396,6 +401,8 @@ namespace TdoT_2048_WPF
             if (username_txtbx.Foreground == Brushes.Gray)
                 username_txtbx.Text = null;
             username_txtbx.Foreground = Brushes.Black;
+            Leaderboard_lbx.Visibility = Visibility.Hidden;
+            Leaderboard_txtbk.Text = "Anzeigename: ";
         }
         private void username_txtbx_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -403,6 +410,8 @@ namespace TdoT_2048_WPF
             {
                 username_txtbx.Text = "Anzeigenamen hier angeben";
                 username_txtbx.Foreground = Brushes.Gray;
+            Leaderboard_lbx.Visibility = Visibility.Visible;
+                Leaderboard_txtbk.Text = "Leaderboard: ";
             }
         }
         private void confirm_btn_Click(object sender, RoutedEventArgs e)
@@ -416,6 +425,10 @@ namespace TdoT_2048_WPF
                 username_txtbx.Foreground = Brushes.Gray;
                 username_txtbx.Text = "Anzeigenamen hier angeben";
                 SaveScore();
+                ClearGame();
+                ResetColor();
+                AddRandomNumbers(slots, 2);
+                ColorNumbers();
             }
         }
         private void FillLeaderboard()
@@ -447,7 +460,10 @@ namespace TdoT_2048_WPF
         }
         private void SaveScore()
         {
+            if(score != 0)
+            {
             File.WriteAllText("./scores.txt", File.ReadAllText("./scores.txt") + $"\n{score};{username.Replace(";", "")};");
+            }
             FillLeaderboard();
         }
     }

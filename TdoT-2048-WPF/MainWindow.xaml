@@ -25,11 +25,12 @@
         <Button Name="BLM" Content="-" HorizontalAlignment="Left" Margin="110,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Name="BRM" Content="-" HorizontalAlignment="Left" Margin="210,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
         <Button Name="BR" Content="-" HorizontalAlignment="Left" Margin="310,310,0,0" VerticalAlignment="Top" Height="80" Width="80" Background="Transparent" IsHitTestVisible="False"/>
-        <TextBlock Text="Score: " FontSize="25" TextAlignment="Left" Margin="10,420,525,0" Name="score_txtbk"></TextBlock>
+        <TextBlock Text="Score: 0" FontSize="25" TextAlignment="Left" Margin="10,420,525,0" Name="score_txtbk"></TextBlock>
         <TextBlock Text="Leaderboard: " FontSize="25" TextAlignment="Left" Margin="425,10,110,410" Name="Leaderboard_txtbk"></TextBlock>
 
         <ListBox Margin="425,52,25,94" Name="Leaderboard_lbx" FontSize="20"/>
-        <TextBox Visibility="Hidden" Margin="425,55,25,0" FontSize="20" Name="username_txtbx" GotFocus="username_txtbx_GotFocus" LostFocus="username_txtbx_LostFocus" Foreground="Gray">Anzeigenamen hier angeben</TextBox>
-        <Button Margin="425,134,25,294" FontSize="20" Name="confirm_btn" Click="confirm_btn_Click" Background="Transparent" Visibility="Hidden">Bestätigen</Button>
+        <TextBox Visibility="Hidden" Margin="425,55,25,365" FontSize="20" Name="username_txtbx" GotFocus="username_txtbx_GotFocus" LostFocus="username_txtbx_LostFocus" Foreground="Gray">Anzeigenamen hier angeben</TextBox>
+        <Button Margin="425,119,25,309" FontSize="20" Name="confirm_btn" Click="confirm_btn_Click" Background="Transparent" Visibility="Hidden">Bestätigen</Button>
+        
     </Grid>
 </Window>
